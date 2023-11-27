@@ -9,6 +9,7 @@ export default class extends BaseSchema {
       table.string('username', 80).notNullable().unique()
       table.string('email', 255).notNullable().unique()
       table.string('password', 60).notNullable()
+      table.string('confirmation_password', 60).notNullable()
       table.boolean('active').defaultTo(true)
       table.timestamp('created_at', { useTz: true })
       

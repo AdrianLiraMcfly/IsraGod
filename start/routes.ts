@@ -24,7 +24,31 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('/users', 'UsersController.index')
-Route.get('/posts', 'PostsController.index')
-Route.get('/comments', 'CommentsController.index')
 Route.any('/methods', 'MethodsController.index')
+
+Route.group(() => {
+  Route.get('/', 'UsersController.index')
+  Route.get('/:id', 'UsersController.getUser')
+  Route.post('/users', 'ValidationsController.createUser')
+  Route.put('/:id', 'UsersController.update')
+  Route.delete('/:id', 'UsersController.destroy')
+}).prefix('/users')
+
+Route.group(() => {
+  Route.get('/', 'PostsController.index')
+  Route.get('/:id', 'PostsController.getPost')
+  Route.post('/', 'PostsController.store')
+  Route.put('/:id', 'PostsController.update')
+  Route.delete('/:id', 'PostsController.destroy')
+}).prefix('/posts')
+
+Route.group(() => {
+  Route.get('/', 'CommentsController.index')
+  Route.get('/:id', 'CommentsController.getComment')
+  Route.post('/', 'CommentsController.store')
+  Route.put('/:id', 'CommentsController.update')
+  Route.delete('/:id', 'CommentsController.destroy')
+}).prefix('/comments')
+
+Route.get('/users/getone/:id', 'UsersController.getOne')
+Route.post('/users', 'ValidationsController.createUser')

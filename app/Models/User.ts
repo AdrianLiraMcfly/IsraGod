@@ -18,7 +18,11 @@ export default class User extends BaseModel {
   @column()
   public password: string
 
+  @column()
+  public confirmation_password: string
 
+  @column({ columnName: 'active' })
+  public active: boolean;
 }
 
 

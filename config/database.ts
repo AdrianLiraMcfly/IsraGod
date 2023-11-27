@@ -40,7 +40,7 @@ const databaseConfig: DatabaseConfig = {
         port: Env.get('DB_PORT', 3306),
         user: Env.get('DB_USER', 'root'),
         password: Env.get('DB_PASSWORD', ''),
-        database: Env.get('DB_DATABASE', 'base2'),
+        database: Env.get('DB_DATABASE', 'pruebaisra'),
       },
       migrations: {
         naturalSort: true,
